@@ -1,3 +1,18 @@
+function sortNumbers(numbers) {
+  numbers.sort((a, b) => b - a)
+  return numbers
+}
+
+const quantity = parseInt(prompt('How many numbers do you want order: '))
+const numbers = []
+for (let i = 0; i < quantity; i++) {
+  numbers.push(parseFloat(prompt(`Enter the number (${i + 1}/${quantity})`)))
+}
+
+alert(`Numbers orders: ${numbers}`)
+
+// version 2
+
 function reverseQuickSort(array) {
   let sortedArray = quickSort(array, 0, array.length - 1)
   console.log(sortedArray.reverse());
