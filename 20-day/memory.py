@@ -21,4 +21,5 @@ if __name__ == '__main__':
         while not number == str(chars.index(random_chars[i - 1]) + 1):
             wrong += 1
             number =  input('Wrong digit correspondent to be random character number {}, try again: ' .format(i))
+
     print('Congratulations you remembered the order!!! Number of wrong tries: {}' .format(wrong))
