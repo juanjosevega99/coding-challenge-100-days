@@ -1,30 +1,27 @@
-menu = '''Interest Calculator'''
+import csv
+import time
 
-print(menu)
+def read_csv():
+    with open('names.csv', 'r') as file:
+        names_list = []
+        reader = csv.reader(file)
+        for row in reader:
+            names_list.append(row[0])
+        return names_list
 
-def run():
-    capital = int(input('Enter the amount in Co: '))
-    interest = 4
-    months = 36
-    intYear = 0
-    bank = 'A'
-    interest_calculator(capital, interest, months, intYear, bank)
-    interest = 3
-    intYear = 7 / 100
-    bank = 'B'
-    interest_calculator(capital, interest, months, intYear, bank)
-
-
-def interest_calculator(capital, interest, months, intYear, bank):
-    for month in range(months):
-        capital = capital + capital * interest / 100
-        if month == 11 or month == 23 or month == 35:
-            capital = capital + intYear * capital
-            capital = round(capital, 2)
-            print(f'Your profit in {int((mes + 1) / 12)} years, interest of {interest}% is {capital} co in the bank {bank} with the plus interest {intYear}')
-        else:
-            pass
+    
+def bubble_sort(name_list):
+    start = time.perf_counter()
+    for num in range(len(name_list) - 1, 0, -1):
+        for i in range(num):
+            if name_list[i] > name_list[i+1]:
+                name_list[i], name_list[i+1] = name_list[i+1], name_list[i]
+    stop = time.perf_counter()
+    total_time = (stop - start) * 1000
+    print(name_list)
+    print('Bubble sort takes {} ms to order your list'.format(total_time))
 
 
-if __name__ == "__main__":
-    run()
+if __name__ == '__name__':
+    name_list = read_csv()
+    bubble_sort(name_list)
