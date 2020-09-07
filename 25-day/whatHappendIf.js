@@ -1,37 +1,27 @@
-// save in other bank
-function finalSavings(capital, months, bank) {
-  let finalSaving = capital
-  let interestActual = bank.interest
-  let increasedInterest = bank.interestPlus
-  while (months / 12 >= 1) {
-    finalSaving *= Math.pow((1 + interestActual), 12)
-    interestActual += increasedInterest
-    months -= 12
+function orderNames() {
+  if (document.getElementById('input-file').isDefaultNamespace.length === 0) {
+    alert('There was no file selected')
+    return
   }
-  finalSaving *= Math.pow((1 + interestActual), months)
-  return finalSaving
-}
 
-// banks data
-const BANK_1 = {
-  interest: 0.04,
-  interestPlus: 0
-}
-const BANK_2 = {
-  interest: 0.03,
-  interestPlus: 0.07
-}
+  let file = document.getElementById('input-file').files[0]
+  let fileReader = new FileReader()
 
-// user data
-const initialSaving = 1000
-const times = [1, 2, 3]
+  fileReader.onload = (event) => {
+    let textFile = event.target.result
+    let names = [...textFile.split('\n')]
 
-times.forEach(time => {
-  let months = time * 12
-  let finalSaving_bank1 = finalSavings(initialSaving, months, BANK_1)
-  let finalSaving_bank2 = finalSavings(initialSaving, months, BANK_2)
-  bestBank = finalSaving_bank1 > finalSaving_bank2 ? 1 : 2
-  console.log(`In the 1 bank you save $${finalSaving_bank1.toFixed(2)}`)
-  console.log(`In the 2 bank you save $${finalSaving_bank2.toFixed(2)}`)
-  console.log(`For a time of ${time} years is better the bank ${bestBank}`)
-})
+    console.time('InsertionSort')
+    const sort2 = insertionSort(names)
+    console.timeEnd('InsertionSort')
+
+    console.time('QuickSort')
+    quickSort(names, 0, names.length - 1)
+    console.timeEnd('QuickSort')
+
+    console.log(sort2)
+    console.log(names)
+  }
+
+  fileReader.readAsText(file)
+}
