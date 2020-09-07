@@ -25,3 +25,43 @@ function orderNames() {
 
   fileReader.readAsText(file)
 }
+
+function quickSort(array, left, right) {
+  if (left < right) {
+    index = quickSortPartition(array, left, right)
+    quickSort(array, left, index - 1)
+    quickSort(array, index + 1, right)
+  }
+}
+
+function quickSortPartition(array, left, right) {
+  let pivot = array[right]
+  let i = left
+
+  for (let j = 0; j < array.length; j++) {
+    if (array[j] < pivot) {
+      swap(array, i, j)
+      i++
+    }
+  }
+  swap(array, i, right)
+  return i
+}
+
+function swap(array, numA, numB) {
+  let aux = array[numA]
+  array[numA] = array[numB]
+  array[numB] = aux
+}
+
+function insertionSort(unsortedArray) {
+  let array = [...unsortedArray]
+  for (let i = 0; i < array.length; i++) {
+    let j = i
+    while (j > 0 && array[j - 1] > array[j]) {
+      swap(array, j, j - 1)
+      j--
+    }
+  }
+  return array
+}
