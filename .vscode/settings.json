@@ -1,5 +1,8 @@
 {
   "workbench.colorTheme": "SynthWave '84",
   "editor.fontFamily": "'JetBrains Mono', monospace",
-  "editor.fontSize": 13
+  "editor.fontSize": 13,
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.pythonPath": "/usr/bin/python3"
 }
